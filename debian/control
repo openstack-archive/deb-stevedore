@@ -1,0 +1,16 @@
+Source: stevedore
+Section: python
+Priority: extra
+Maintainer: Julien Danjou <acid@debian.org>
+Build-Depends: debhelper (>= 8.0.0), python | python-all | python-dev | python-all-dev
+Standards-Version: 3.9.3
+Homepage: https://github.com/dreamhost/stevedore
+Vcs-Git: git://git.debian.org/collab-maint/stevedore.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/stevedore.git;a=summary
+
+Package: python-stevedore
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
+Description: manage dynamic plugins for Python applications
+ This package allow a Python application to load and manage a set of dynamic
+ plugins.

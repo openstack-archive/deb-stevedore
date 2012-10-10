@@ -1,0 +1,5 @@
+stevedore (0.4-1) unstable; urgency=low
+
+  * Initial release (Closes: #687934)
+
+ -- Julien Danjou <acid@debian.org>  Wed, 10 Oct 2012 14:51:42 +0200

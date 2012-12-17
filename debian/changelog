@@ -1,6 +1,7 @@
 stevedore (0.7.1-1) UNRELEASED; urgency=low
 
   * New upstream realase
+  * Run tests on build
 
  -- Julien Danjou <acid@debian.org>  Mon, 17 Dec 2012 11:33:46 +0100
 

@@ -2,6 +2,9 @@
 %:
 	dh $@ --with=python2
 
+override_dh_auto_test:
+	PYTHONPATH=. nosetests -d stevedore
+
 override_dh_clean:
 	dh_clean
 	rm -rf stevedore.egg-info

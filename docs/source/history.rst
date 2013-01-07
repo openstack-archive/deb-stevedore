@@ -2,6 +2,18 @@
  History
 =========
 
+0.8
+
+  - Ignore AssertionError exceptions generated when plugins are
+    loaded.
+  - Update :class:`~stevedore.named.NamedExtensionManager` to check
+    the name of a plugin before loading its code to avoid importing
+    anything we are not going to use.
+
+0.7.2
+
+  - Fix logging support for Python 2.6.
+
 0.7.1
 
   - Fix an issue with logging configuration.

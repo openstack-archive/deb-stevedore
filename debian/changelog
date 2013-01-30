@@ -1,4 +1,4 @@
-stevedore (0.8-2) UNRELEASED; urgency=low
+stevedore (0.8-2) unstable; urgency=low
 
   * Add missing build-dependencies (Closes: #699195)
 

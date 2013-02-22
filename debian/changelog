@@ -1,3 +1,9 @@
+stevedore (0.8-3) unstable; urgency=low
+
+  * Using python (>= 2.6.6-3~) in build-depends.
+
+ -- Thomas Goirand <zigo@debian.org>  Sat, 23 Feb 2013 03:01:37 +0800
+
 stevedore (0.8-2) unstable; urgency=low
 
   * Add missing build-dependencies (Closes: #699195)

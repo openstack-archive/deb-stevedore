@@ -2,6 +2,23 @@
  History
 =========
 
+0.9
+
+- Add ``name_order`` parameter to
+  :class:`~stevedore.named.NamedExtensionManager` to coerce
+  :func:`map` into processing the extensions in the order they are
+  named when the manager is created, instead of the random order
+  they may have been loaded. Contributed by Daniel Rocco.
+- Change the
+  :class:`~stevedore.dispatch.NamedDispatchExtensionManager` to ignore
+  missing extensions (:issue:`14`).
+- Add ``__getitem__`` to
+  :class:`~stevedore.extension.ExtensionManager` for looking up
+  individual plugins by name (:issue:`15`).
+- Start working on the tutorial, :doc:`tutorial/index`.
+- Remove dependency on distribute, now that it is merged back into
+  setuptools 0.7 (:issue:`19`).
+
 0.8
 
   - Ignore AssertionError exceptions generated when plugins are

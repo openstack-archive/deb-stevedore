@@ -23,10 +23,22 @@ class HookManager(NamedExtensionManager):
 
     def __init__(self, namespace, name,
                  invoke_on_load=False, invoke_args=(), invoke_kwds={}):
+        self._name = name
         super(HookManager, self).__init__(
             namespace,
             [name],
             invoke_on_load=invoke_on_load,
             invoke_args=invoke_args,
             invoke_kwds=invoke_kwds,
-            )
+        )
+
+    def __getitem__(self, name):
+        """Return the named extensions.
+
+        Accessing a HookManager as a dictionary (``em['name']``)
+        produces a list of the :class:`Extension` instance(s) with the
+        specified name, in the order they would be invoked by map().
+        """
+        if name != self._name:
+            raise KeyError(name)
+        return self.extensions

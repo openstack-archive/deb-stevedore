@@ -12,6 +12,11 @@ LOG = logging.getLogger(__name__)
 class Extension(object):
     """Book-keeping object for tracking extensions.
 
+    The arguments passed to the constructor are saved as attributes of
+    the instance using the same names, and can be accessed by the
+    callables passed to :meth:`map` or when iterating over an
+    :class:`ExtensionManager` directly.
+
     :param name: The entry point name.
     :type name: str
     :param entry_point: The EntryPoint instance returned by
@@ -20,6 +25,7 @@ class Extension(object):
     :param plugin: The value returned by entry_point.load()
     :param obj: The object returned by ``plugin(*args, **kwds)`` if the
                 manager invoked the extension on load.
+
     """
 
     def __init__(self, name, entry_point, plugin, obj):
@@ -45,6 +51,7 @@ class ExtensionManager(object):
         the object returned by the entry point. Only used if invoke_on_load
         is True.
     :type invoke_kwds: dict
+
     """
 
     def __init__(self, namespace,
@@ -55,6 +62,7 @@ class ExtensionManager(object):
         self.extensions = self._load_plugins(invoke_on_load,
                                              invoke_args,
                                              invoke_kwds)
+        self._extensions_by_name = None
 
     ENTRY_POINT_CACHE = {}
 
@@ -93,6 +101,9 @@ class ExtensionManager(object):
 
     def names(self):
         "Returns the names of the discovered extensions"
+        # We want to return the names of the extensions in the order
+        # they would be used by map(), since some subclasses change
+        # that order.
         return [e.name for e in self.extensions]
 
     def map(self, func, *args, **kwds):
@@ -132,4 +143,23 @@ class ExtensionManager(object):
             LOG.exception(err)
 
     def __iter__(self):
+        """Produce iterator for the manager.
+
+        Iterating over an ExtensionManager produces the :class:`Extension`
+        instances in the order they would be invoked.
+        """
         return iter(self.extensions)
+
+    def __getitem__(self, name):
+        """Return the named extension.
+
+        Accessing an ExtensionManager as a dictionary (``em['name']``)
+        produces the :class:`Extension` instance with the
+        specified name.
+        """
+        if self._extensions_by_name is None:
+            d = {}
+            for e in self.extensions:
+                d[e.name] = e
+            self._extensions_by_name = d
+        return self._extensions_by_name[name]

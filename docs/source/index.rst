@@ -15,11 +15,14 @@ dynamically loaded extensions.
 Contents:
 
 .. toctree::
+   :glob:
 
    patterns_loading
    patterns_enabling
+   tutorial/index
    managers
    install
+   essays/*
    history
 
 .. _setuptools entry points: http://packages.python.org/distribute/pkg_resources.html#convenience-api
@@ -30,4 +33,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

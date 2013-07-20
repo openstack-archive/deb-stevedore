@@ -17,6 +17,7 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/stevedore.git;a=summary
 
 Package: python-stevedore
 Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
 Description: manage dynamic plugins for Python applications
  This package allow a Python application to load and manage a set of dynamic

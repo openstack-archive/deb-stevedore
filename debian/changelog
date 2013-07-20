@@ -4,6 +4,7 @@ stevedore (0.10-1) unstable; urgency=low
   * Stevedore now maintained by pkg-openstack team.
   * Now using openstack-pkg-tools.
   * Added debian/gbp.conf.
+  * Added Pre-Depends: dpkg (>= 1.15.6~) because of xz compression.
 
  -- Thomas Goirand <zigo@debian.org>  Sat, 20 Jul 2013 22:09:59 +0800
 

@@ -12,8 +12,8 @@ Build-Depends: debhelper (>= 8.0.0),
  openstack-pkg-tools
 Standards-Version: 3.9.4
 Homepage: https://github.com/dreamhost/stevedore
-Vcs-Git: git://git.debian.org/collab-maint/stevedore.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/stevedore.git;a=summary
+Vcs-Git: git://git.debian.org/openstack/stevedore.git
+Vcs-Browser: http://git.debian.org/?p=openstack/stevedore.git;a=summary
 
 Package: python-stevedore
 Architecture: all

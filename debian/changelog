@@ -1,5 +1,6 @@
-stevedore (0.9.1-1) unstable; urgency=low
+stevedore (0.10-1) unstable; urgency=low
 
+  * New upstream release.
   * Stevedore now maintained by pkg-openstack team.
   * Now using openstack-pkg-tools.
 

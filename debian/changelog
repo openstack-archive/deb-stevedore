@@ -1,5 +1,11 @@
 stevedore (0.9.1-1) unstable; urgency=low
 
+  * Stevedore now maintained by pkg-openstack team.
+
+ -- Thomas Goirand <zigo@debian.org>  Sat, 20 Jul 2013 22:09:59 +0800
+
+stevedore (0.9.1-1) unstable; urgency=low
+
   * New upstream release
   * Bump standard version
 

@@ -1,6 +1,7 @@
 stevedore (0.10-2) UNRELEASED; urgency=low
 
   * Removed pkg-openstack as maintainer uppon request form Julien.
+  * Switched to debhelper 9.
 
  -- Thomas Goirand <zigo@debian.org>  Tue, 23 Jul 2013 15:46:32 +0800
 

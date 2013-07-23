@@ -3,16 +3,16 @@ Section: python
 Priority: extra
 Maintainer: Julien Danjou <acid@debian.org>,
 Uploaders: Thomas Goirand <zigo@debian.org>
-Build-Depends: debhelper (>= 8.0.0),
+Build-Depends: debhelper (>= 9),
  python (>= 2.6.6-3~),
  python-nose,
  python-mock,
  python-setuptools,
  openstack-pkg-tools
 Standards-Version: 3.9.4
-Homepage: https://github.com/dreamhost/stevedore
 Vcs-Git: git://git.debian.org/collab-maint/stevedore.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/stevedore.git;a=summary
+Homepage: https://github.com/dreamhost/stevedore
 
 Package: python-stevedore
 Architecture: all

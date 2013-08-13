@@ -4,11 +4,41 @@ UPSTREAM_GIT = git://github.com/dreamhost/stevedore.git
 
 include /usr/share/openstack-pkg-tools/pkgos.make
 
+PYTHON2=$(shell pyversions -vr)
+PYTHON3=$(shell py3versions -vr)
+
 %:
-	dh $@ --with=python2
+	dh $@ --with=python2,python3
+
+override_dh_auto_build:
+	set -e && for pyvers in $(PYTHON2); do \
+		python$$pyvers setup.py build; \
+	done
+	set -e && for pyvers in $(PYTHON3); do \
+		python$$pyvers setup.py build; \
+	done
+
+override_dh_auto_install:
+	set -e && for pyvers in $(PYTHON2); do \
+		python$$pyvers setup.py install --install-layout=deb \
+			--root $(CURDIR)/debian/python-stevedore; \   
+	done
+	set -e && for pyvers in $(PYTHON3); do \
+		python$$pyvers setup.py install --install-layout=deb \
+			--root $(CURDIR)/debian/python3-stevedore; \  
+	done
+
+override_dh_auto_clean:
+	set -e && for pyvers in $(PYTHON2); do \
+		python$$pyvers setup.py clean; \
+	done
+	set -e && for pyvers in $(PYTHON3); do \
+		python$$pyvers setup.py clean; \
+	done
 
 override_dh_auto_test:
 	PYTHONPATH=. nosetests -d stevedore
+	PYTHONPATH=. nosetests3 -d stevedore
 
 override_dh_clean:
 	dh_clean

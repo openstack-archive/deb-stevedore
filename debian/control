@@ -4,11 +4,15 @@ Priority: extra
 Maintainer: Julien Danjou <acid@debian.org>,
 Uploaders: Thomas Goirand <zigo@debian.org>
 Build-Depends: debhelper (>= 9),
+ openstack-pkg-tools,
  python (>= 2.6.6-3~),
- python-nose,
  python-mock,
+ python-nose,
  python-setuptools,
- openstack-pkg-tools
+ python3-all (>= 3.1.2-7~),
+ python3-mock,
+ python3-nose,
+ python3-setuptools
 Standards-Version: 3.9.4
 Vcs-Git: git://git.debian.org/collab-maint/stevedore.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/stevedore.git;a=summary
@@ -17,8 +21,8 @@ Homepage: https://github.com/dreamhost/stevedore
 Package: python-stevedore
 Architecture: all
 Pre-Depends: dpkg (>= 1.15.6~)
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
-Description: manage dynamic plugins for Python applications
+Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}
+Description: manage dynamic plugins for Python applications - python2
  Python makes loading code dynamically easy, allowing you to configure and
  extend your application by discovering and loading extensions (plugins) at
  runtime. Many applications implement their own library for doing this, using
@@ -27,3 +31,21 @@ Description: manage dynamic plugins for Python applications
  entry points tends to be repetitive, though, so stevedore provides manager
  classes for implementing common patterns for using dynamically loaded
  extensions.
+ .
+ This package provides the Python 2.x module.
+
+Package: python3-stevedore
+Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Description: manage dynamic plugins for Python applications - python3
+ Python makes loading code dynamically easy, allowing you to configure and
+ extend your application by discovering and loading extensions (plugins) at
+ runtime. Many applications implement their own library for doing this, using
+ __import__ or importlib. stevedore avoids creating yet another extension
+ mechanism by building on top of setuptools entry points. The code for managing
+ entry points tends to be repetitive, though, so stevedore provides manager
+ classes for implementing common patterns for using dynamically loaded
+ extensions.
+ .
+ This package provides the Python 3.x module.

@@ -4,6 +4,8 @@ UPSTREAM_GIT = git://github.com/dreamhost/stevedore.git
 
 include /usr/share/openstack-pkg-tools/pkgos.make
 
+export OSLO_PACKAGE_VERSION=$(VERSION)
+
 PYTHON2=$(shell pyversions -vr)
 PYTHON3=$(shell py3versions -vr)
 

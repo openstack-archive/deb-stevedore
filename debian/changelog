@@ -1,3 +1,11 @@
+stevedore (0.13-1) UNRELEASED; urgency=low
+
+  * New upstream release:
+    - d/control: Add new BD's on python-pbr/python3-pbr.
+    - d/rules: Configure OSLO_PACKAGE_VERSION=$(VERSION).
+
+ -- James Page <james.page@ubuntu.com>  Wed, 04 Dec 2013 11:45:32 +0000
+
 stevedore (0.10-2) unstable; urgency=low
 
   * Removed pkg-openstack as maintainer uppon request form Julien.

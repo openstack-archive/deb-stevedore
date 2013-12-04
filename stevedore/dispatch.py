@@ -73,6 +73,30 @@ class DispatchExtensionManager(EnabledExtensionManager):
                 self._invoke_one_plugin(response.append, func, e, args, kwds)
         return response
 
+    def map_method(self, filter_func, method_name, *args, **kwds):
+        """Iterate over the extensions invoking each one's object method called
+        `method_name` for any where filter_func() returns True.
+
+        This is equivalent of using :meth:`map` with func set to
+        `lambda x: x.obj.method_name()`
+        while being more convenient.
+
+        Exceptions raised from within the called method are propagated up
+        and processing stopped if self.propagate_map_exceptions is True,
+        otherwise they are logged and ignored.
+
+        .. versionadded:: 0.12
+
+        :param filter_func: Callable to test each extension.
+        :param method_name: The extension method name to call
+                            for each extension.
+        :param args: Variable arguments to pass to method
+        :param kwds: Keyword arguments to pass to method
+        :returns: List of values returned from methods
+        """
+        return self.map(filter_func, self._call_extension_method,
+                        method_name, *args, **kwds)
+
 
 class NameDispatchExtensionManager(DispatchExtensionManager):
     """Loads all plugins and filters on execution.
@@ -118,6 +142,9 @@ class NameDispatchExtensionManager(DispatchExtensionManager):
             invoke_kwds=invoke_kwds,
             propagate_map_exceptions=propagate_map_exceptions,
         )
+
+    def _init_plugins(self, extensions):
+        super(NameDispatchExtensionManager, self)._init_plugins(extensions)
         self.by_name = dict((e.name, e) for e in self.extensions)
 
     def map(self, names, func, *args, **kwds):
@@ -151,3 +178,27 @@ class NameDispatchExtensionManager(DispatchExtensionManager):
             else:
                 self._invoke_one_plugin(response.append, func, e, args, kwds)
         return response
+
+    def map_method(self, names, method_name, *args, **kwds):
+        """Iterate over the extensions invoking each one's object method called
+        `method_name` for any where the name is in the given list of names.
+
+        This is equivalent of using :meth:`map` with func set to
+        `lambda x: x.obj.method_name()`
+        while being more convenient.
+
+        Exceptions raised from within the called method are propagated up
+        and processing stopped if self.propagate_map_exceptions is True,
+        otherwise they are logged and ignored.
+
+        .. versionadded:: 0.12
+
+        :param names: List or set of name(s) of extension(s) to invoke.
+        :param method_name: The extension method name
+                            to call for each extension.
+        :param args: Variable arguments to pass to method
+        :param kwds: Keyword arguments to pass to method
+        :returns: List of values returned from methods
+        """
+        return self.map(names, self._call_extension_method,
+                        method_name, *args, **kwds)

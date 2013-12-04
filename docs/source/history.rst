@@ -2,6 +2,32 @@
  History
 =========
 
+dev
+
+- Deprecate ``TestExtensionManager`` and replace with
+  ``make_test_instance()`` class method to provide test classes that
+  behave more like the production class, while still allowing the
+  extensions to be injected for testing. (contributed by drocco-007)
+- Include a work-around to avoid a cpython bug with atexit
+  (#15881). (contributed by philiptzou)
+- Update documentation to refer to setuptools instead of
+  distribute. (contributed by westurner)
+- Add pypy to the list of default test configurations.
+
+0.12
+
+- Fixes an exception when reporting on an error where multiple drivers
+  have the same name (:issue:`25`, solution provided by clayg).
+- Switch packaging to use pbr_.
+- Add ``map_method()`` API to controllers.
+
+.. _pbr: https://github.com/openstack-dev/pbr
+
+0.11
+
+- Fixes logging configuration under Python 2.6 with a NullHandler.
+  (:issue:`2`)
+
 0.10
 
 - Adds ``propagate_map_exceptions`` parameter to all of the extension

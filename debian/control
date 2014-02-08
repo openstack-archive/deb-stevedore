@@ -17,8 +17,8 @@ Build-Depends: debhelper (>= 9),
                python3-pbr (>= 0.5.21),
                python3-setuptools
 Standards-Version: 3.9.4
-Vcs-Git: git://git.debian.org/collab-maint/stevedore.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/stevedore.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/stevedore.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/stevedore.git;a=summary
 Homepage: https://github.com/dreamhost/stevedore
 
 Package: python-stevedore

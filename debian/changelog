@@ -10,6 +10,7 @@ stevedore (0.13-1) UNRELEASED; urgency=low
   * Added a sphinxdoc package, and generates the sphinx documentation in html.
   * Added debian/source/options to ignore the egg-info changes, and removed the
     deletion of it.
+  * Do nosetests for all python versions.
 
  -- Thomas Goirand <zigo@debian.org>  Sat, 08 Feb 2014 22:54:16 +0800
 

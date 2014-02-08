@@ -12,6 +12,7 @@ stevedore (0.13-1) UNRELEASED; urgency=low
     deletion of it.
   * Do nosetests for all python versions.
   * Canonical VCS fields.
+  * Standards-Version: is now 3.9.5.
 
  -- Thomas Goirand <zigo@debian.org>  Sat, 08 Feb 2014 22:54:16 +0800
 

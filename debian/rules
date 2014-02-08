@@ -10,7 +10,7 @@ PYTHON2=$(shell pyversions -vr)
 PYTHON3=$(shell py3versions -vr)
 
 %:
-	dh $@ --with=python2,python3
+	dh $@ --with=python2,python3,sphinxdoc
 
 override_dh_auto_build:
 	set -e && for pyvers in $(PYTHON2); do \
@@ -42,6 +42,8 @@ override_dh_auto_test:
 	PYTHONPATH=. nosetests -d stevedore
 	PYTHONPATH=. nosetests3 -d stevedore
 
-override_dh_clean:
-	dh_clean
-	rm -rf stevedore.egg-info
+override_dh_sphinxdoc:
+ifeq (,$(findstring nodocs, $(DEB_BUILD_OPTIONS)))
+	sphinx-build -b html docs/source $(CURDIR)/debian/python-stevedore-doc/usr/share/doc/python-stevedore-doc/html
+	dh_sphinxdoc -O--buildsystem=python_distutils
+endif

@@ -1,7 +1,7 @@
 Source: stevedore
 Section: python
 Priority: extra
-Maintainer: Julien Danjou <acid@debian.org>,
+Maintainer: Julien Danjou <acid@debian.org>
 Uploaders: Thomas Goirand <zigo@debian.org>
 Build-Depends: debhelper (>= 9),
                openstack-pkg-tools,

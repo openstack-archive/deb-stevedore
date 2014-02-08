@@ -1,0 +1,9 @@
+Document: python-stevedore-doc
+Title: Stevedore Documentation
+Author: Doug Hellmann
+Abstract: Sphinx documentation for Stevedore
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-stevedore-doc/html/index.html
+Files: /usr/share/doc/python-stevedore-doc/html/*

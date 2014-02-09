@@ -40,10 +40,10 @@ override_dh_auto_clean:
 
 override_dh_auto_test:
 	set -e && for pyvers in $(PYTHON2); do \
-		PYTHONPATH=. PYTHON=python$$pyvers nosetests -d stevedore || true ; \
+		PYTHONPATH=. PYTHON=python$$pyvers nosetests -d stevedore ; \
 	done
 	set -e && for pyvers in $(PYTHON3); do \
-		PYTHONPATH=. PYTHON=python$$pyvers nosetests3 -d stevedore || true ; \
+		PYTHONPATH=. PYTHON=python$$pyvers nosetests3 -d stevedore ; \
 	done
 
 override_dh_sphinxdoc:

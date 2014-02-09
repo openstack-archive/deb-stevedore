@@ -1,4 +1,4 @@
-stevedore (0.14-1) unstable; urgency=medium
+stevedore (0.14.1-1) unstable; urgency=medium
 
   * New upstream release.
   * Added a sphinxdoc package, and generates the sphinx documentation in html.

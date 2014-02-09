@@ -29,23 +29,37 @@ class NamedExtensionManager(ExtensionManager):
         are propagated up through the map call or whether they are logged and
         then ignored
     :type propagate_map_exceptions: bool
+    :param on_load_failure_callback: Callback function that will be called when
+        a entrypoint can not be loaded. The arguments that will be provided
+        when this is called (when an entrypoint fails to load) are
+        (manager, entrypoint, exception)
+    :type on_load_failure_callback: function
+    :param verify_requirements: Use setuptools to enforce the
+        dependencies of the plugin(s) being loaded. Defaults to False.
+    :type verify_requirements: bool
 
     """
 
     def __init__(self, namespace, names,
                  invoke_on_load=False, invoke_args=(), invoke_kwds={},
-                 name_order=False, propagate_map_exceptions=False):
+                 name_order=False, propagate_map_exceptions=False,
+                 on_load_failure_callback=None,
+                 verify_requirements=False):
         self._init_attributes(
             namespace, names, name_order=name_order,
-            propagate_map_exceptions=propagate_map_exceptions)
+            propagate_map_exceptions=propagate_map_exceptions,
+            on_load_failure_callback=on_load_failure_callback)
         extensions = self._load_plugins(invoke_on_load,
                                         invoke_args,
-                                        invoke_kwds)
+                                        invoke_kwds,
+                                        verify_requirements)
         self._init_plugins(extensions)
 
     @classmethod
     def make_test_instance(cls, extensions, namespace='TESTING',
-                           propagate_map_exceptions=False):
+                           propagate_map_exceptions=False,
+                           on_load_failure_callback=None,
+                           verify_requirements=False):
         """Construct a test NamedExtensionManager
 
         Test instances are passed a list of extensions to use rather than
@@ -60,6 +74,15 @@ class NamedExtensionManager(ExtensionManager):
             are propagated up through the map call or whether they are logged
             and then ignored
         :type propagate_map_exceptions: bool
+        :param on_load_failure_callback: Callback function that will
+            be called when a entrypoint can not be loaded. The
+            arguments that will be provided when this is called (when
+            an entrypoint fails to load) are (manager, entrypoint,
+            exception)
+        :type on_load_failure_callback: function
+        :param verify_requirements: Use setuptools to enforce the
+            dependencies of the plugin(s) being loaded. Defaults to False.
+        :type verify_requirements: bool
         :return: The manager instance, initialized for testing
 
         """
@@ -67,14 +90,17 @@ class NamedExtensionManager(ExtensionManager):
         o = cls.__new__(cls)
         names = [e.name for e in extensions]
         o._init_attributes(namespace, names,
-                           propagate_map_exceptions=propagate_map_exceptions)
+                           propagate_map_exceptions=propagate_map_exceptions,
+                           on_load_failure_callback=on_load_failure_callback)
         o._init_plugins(extensions)
         return o
 
     def _init_attributes(self, namespace, names, name_order=False,
-                         propagate_map_exceptions=False):
+                         propagate_map_exceptions=False,
+                         on_load_failure_callback=None):
         super(NamedExtensionManager, self)._init_attributes(
-            namespace, propagate_map_exceptions=propagate_map_exceptions)
+            namespace, propagate_map_exceptions=propagate_map_exceptions,
+            on_load_failure_callback=on_load_failure_callback)
 
         self._names = names
         self._name_order = name_order
@@ -85,7 +111,8 @@ class NamedExtensionManager(ExtensionManager):
         if self._name_order:
             self.extensions = [self[n] for n in self._names]
 
-    def _load_one_plugin(self, ep, invoke_on_load, invoke_args, invoke_kwds):
+    def _load_one_plugin(self, ep, invoke_on_load, invoke_args, invoke_kwds,
+                         verify_requirements):
         # Check the name before going any further to prevent
         # undesirable code from being loaded at all if we are not
         # going to use it.
@@ -93,4 +120,5 @@ class NamedExtensionManager(ExtensionManager):
             return None
         return super(NamedExtensionManager, self)._load_one_plugin(
             ep, invoke_on_load, invoke_args, invoke_kwds,
+            verify_requirements,
         )

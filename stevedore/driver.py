@@ -19,21 +19,35 @@ class DriverManager(NamedExtensionManager):
         the object returned by the entry point. Only used if invoke_on_load
         is True.
     :type invoke_kwds: dict
+    :param on_load_failure_callback: Callback function that will be called when
+        a entrypoint can not be loaded. The arguments that will be provided
+        when this is called (when an entrypoint fails to load) are
+        (manager, entrypoint, exception)
+    :type on_load_failure_callback: function
+    :param verify_requirements: Use setuptools to enforce the
+        dependencies of the plugin(s) being loaded. Defaults to False.
+    :type verify_requirements: bool
     """
 
     def __init__(self, namespace, name,
-                 invoke_on_load=False, invoke_args=(), invoke_kwds={}):
+                 invoke_on_load=False, invoke_args=(), invoke_kwds={},
+                 on_load_failure_callback=None,
+                 verify_requirements=False):
         super(DriverManager, self).__init__(
             namespace=namespace,
             names=[name],
             invoke_on_load=invoke_on_load,
             invoke_args=invoke_args,
             invoke_kwds=invoke_kwds,
+            on_load_failure_callback=on_load_failure_callback,
+            verify_requirements=verify_requirements,
         )
 
     @classmethod
     def make_test_instance(cls, extension, namespace='TESTING',
-                           propagate_map_exceptions=False):
+                           propagate_map_exceptions=False,
+                           on_load_failure_callback=None,
+                           verify_requirements=False):
         """Construct a test DriverManager
 
         Test instances are passed a list of extensions to work from rather
@@ -48,16 +62,27 @@ class DriverManager(NamedExtensionManager):
             are propagated up through the map call or whether they are logged
             and then ignored
         :type propagate_map_exceptions: bool
+        :param on_load_failure_callback: Callback function that will
+            be called when a entrypoint can not be loaded. The
+            arguments that will be provided when this is called (when
+            an entrypoint fails to load) are (manager, entrypoint,
+            exception)
+        :type on_load_failure_callback: function
+        :param verify_requirements: Use setuptools to enforce the
+            dependencies of the plugin(s) being loaded. Defaults to False.
+        :type verify_requirements: bool
         :return: The manager instance, initialized for testing
 
         """
 
         o = super(DriverManager, cls).make_test_instance(
             [extension], namespace=namespace,
-            propagate_map_exceptions=propagate_map_exceptions)
+            propagate_map_exceptions=propagate_map_exceptions,
+            on_load_failure_callback=on_load_failure_callback,
+            verify_requirements=verify_requirements)
         return o
 
-    def _init_plugins(self, extensions, propagate_map_exceptions=False):
+    def _init_plugins(self, extensions):
         super(DriverManager, self)._init_plugins(extensions)
 
         if not self.extensions:

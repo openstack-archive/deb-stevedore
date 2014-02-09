@@ -65,24 +65,38 @@ class ExtensionManager(object):
         are propagated up through the map call or whether they are logged and
         then ignored
     :type propagate_map_exceptions: bool
-
+    :param on_load_failure_callback: Callback function that will be called when
+        a entrypoint can not be loaded. The arguments that will be provided
+        when this is called (when an entrypoint fails to load) are
+        (manager, entrypoint, exception)
+    :type on_load_failure_callback: function
+    :param verify_requirements: Use setuptools to enforce the
+        dependencies of the plugin(s) being loaded. Defaults to False.
+    :type verify_requirements: bool
     """
 
     def __init__(self, namespace,
                  invoke_on_load=False,
                  invoke_args=(),
                  invoke_kwds={},
-                 propagate_map_exceptions=False):
+                 propagate_map_exceptions=False,
+                 on_load_failure_callback=None,
+                 verify_requirements=False):
         self._init_attributes(
-            namespace, propagate_map_exceptions=propagate_map_exceptions)
+            namespace,
+            propagate_map_exceptions=propagate_map_exceptions,
+            on_load_failure_callback=on_load_failure_callback)
         extensions = self._load_plugins(invoke_on_load,
                                         invoke_args,
-                                        invoke_kwds)
+                                        invoke_kwds,
+                                        verify_requirements)
         self._init_plugins(extensions)
 
     @classmethod
     def make_test_instance(cls, extensions, namespace='TESTING',
-                           propagate_map_exceptions=False):
+                           propagate_map_exceptions=False,
+                           on_load_failure_callback=None,
+                           verify_requirements=False):
         """Construct a test ExtensionManager
 
         Test instances are passed a list of extensions to work from rather
@@ -97,19 +111,31 @@ class ExtensionManager(object):
             exceptions are propagated up through the map call or whether they
             are logged and then ignored
         :type propagate_map_exceptions: bool
+        :param on_load_failure_callback: Callback function that will
+            be called when a entrypoint can not be loaded. The
+            arguments that will be provided when this is called (when
+            an entrypoint fails to load) are (manager, entrypoint,
+            exception)
+        :type on_load_failure_callback: function
+        :param verify_requirements: Use setuptools to enforce the
+            dependencies of the plugin(s) being loaded. Defaults to False.
+        :type verify_requirements: bool
         :return: The manager instance, initialized for testing
 
         """
 
         o = cls.__new__(cls)
         o._init_attributes(namespace,
-                           propagate_map_exceptions=propagate_map_exceptions)
+                           propagate_map_exceptions=propagate_map_exceptions,
+                           on_load_failure_callback=on_load_failure_callback)
         o._init_plugins(extensions)
         return o
 
-    def _init_attributes(self, namespace, propagate_map_exceptions=False):
+    def _init_attributes(self, namespace, propagate_map_exceptions=False,
+                         on_load_failure_callback=None):
         self.namespace = namespace
         self.propagate_map_exceptions = propagate_map_exceptions
+        self._on_load_failure_callback = on_load_failure_callback
 
     def _init_plugins(self, extensions):
         self.extensions = extensions
@@ -123,7 +149,8 @@ class ExtensionManager(object):
             self.ENTRY_POINT_CACHE[namespace] = eps
         return self.ENTRY_POINT_CACHE[namespace]
 
-    def _load_plugins(self, invoke_on_load, invoke_args, invoke_kwds):
+    def _load_plugins(self, invoke_on_load, invoke_args, invoke_kwds,
+                      verify_requirements):
         extensions = []
         for ep in self._find_entry_points(self.namespace):
             LOG.debug('found extension %r', ep)
@@ -132,6 +159,7 @@ class ExtensionManager(object):
                                             invoke_on_load,
                                             invoke_args,
                                             invoke_kwds,
+                                            verify_requirements,
                                             )
                 if ext:
                     extensions.append(ext)
@@ -140,10 +168,13 @@ class ExtensionManager(object):
             except Exception as err:
                 LOG.error('Could not load %r: %s', ep.name, err)
                 LOG.exception(err)
+                if self._on_load_failure_callback is not None:
+                    self._on_load_failure_callback(self, ep, err)
         return extensions
 
-    def _load_one_plugin(self, ep, invoke_on_load, invoke_args, invoke_kwds):
-        plugin = ep.load()
+    def _load_one_plugin(self, ep, invoke_on_load, invoke_args, invoke_kwds,
+                         verify_requirements):
+        plugin = ep.load(require=verify_requirements)
         if invoke_on_load:
             obj = plugin(*invoke_args, **invoke_kwds)
         else:

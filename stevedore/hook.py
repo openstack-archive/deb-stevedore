@@ -19,23 +19,37 @@ class HookManager(NamedExtensionManager):
         the object returned by the entry point. Only used if invoke_on_load
         is True.
     :type invoke_kwds: dict
+    :param on_load_failure_callback: Callback function that will be called when
+        a entrypoint can not be loaded. The arguments that will be provided
+        when this is called (when an entrypoint fails to load) are
+        (manager, entrypoint, exception)
+    :type on_load_failure_callback: function
+    :param verify_requirements: Use setuptools to enforce the
+        dependencies of the plugin(s) being loaded. Defaults to False.
+    :type verify_requirements: bool
     """
 
     def __init__(self, namespace, name,
-                 invoke_on_load=False, invoke_args=(), invoke_kwds={}):
+                 invoke_on_load=False, invoke_args=(), invoke_kwds={},
+                 on_load_failure_callback=None,
+                 verify_requirements=False):
         super(HookManager, self).__init__(
             namespace,
             [name],
             invoke_on_load=invoke_on_load,
             invoke_args=invoke_args,
             invoke_kwds=invoke_kwds,
+            on_load_failure_callback=on_load_failure_callback,
+            verify_requirements=verify_requirements,
         )
 
     def _init_attributes(self, namespace, names, name_order=False,
-                         propagate_map_exceptions=False):
+                         propagate_map_exceptions=False,
+                         on_load_failure_callback=None):
         super(HookManager, self)._init_attributes(
             namespace, names,
-            propagate_map_exceptions=propagate_map_exceptions)
+            propagate_map_exceptions=propagate_map_exceptions,
+            on_load_failure_callback=on_load_failure_callback)
         self._name = names[0]
 
     def __getitem__(self, name):

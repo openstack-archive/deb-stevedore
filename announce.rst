@@ -1,5 +1,5 @@
 ================
- stevedore 0.12
+ stevedore 0.14
 ================
 
 .. tags:: stevedore release python
@@ -25,12 +25,11 @@ dynamically loaded extensions.
 What's New?
 ===========
 
-- Fixes an exception when reporting on an error where multiple drivers
-  have the same name (bug 25, solution provided by clayg).
-- Switch packaging to use pbr_.
-- Add ``map_method()`` API to controllers.
+- Provide an option to control requirements checking when loading
+  plugins, and disable it by default. This removes protection against
+  loading the wrong version of a plugin, or that plugin's
+  dependencies.
 
-.. _pbr: https://github.com/openstack-dev/pbr
 
 Installing
 ==========

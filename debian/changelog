@@ -7,6 +7,7 @@ stevedore (0.14-1) unstable; urgency=medium
   * Do nosetests for all python versions.
   * Canonical VCS fields.
   * Standards-Version: is now 3.9.5.
+  * Fixed new upstream VCS URLs in d/control,copyright & rules.
 
  -- Thomas Goirand <zigo@debian.org>  Sun, 09 Feb 2014 11:53:49 +0800
 

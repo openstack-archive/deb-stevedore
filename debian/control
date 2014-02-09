@@ -19,7 +19,7 @@ Build-Depends: debhelper (>= 9),
 Standards-Version: 3.9.5
 Vcs-Git: git://anonscm.debian.org/collab-maint/stevedore.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/stevedore.git;a=summary
-Homepage: https://github.com/dreamhost/stevedore
+Homepage: https://github.com/openstack/stevedore
 
 Package: python-stevedore
 Architecture: all

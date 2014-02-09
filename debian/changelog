@@ -1,12 +1,6 @@
-stevedore (0.13-1) unstable; urgency=medium
+stevedore (0.14-1) unstable; urgency=medium
 
-  [ James Page ]
-  * New upstream release:
-    - d/control: Add new BD's on python-pbr/python3-pbr.
-    - d/rules: Configure OSLO_PACKAGE_VERSION=$(VERSION).
-  * d/watch: Track upstream releases on pypi correctly.
-
-  [ Thomas Goirand ]
+  * New upstream release.
   * Added a sphinxdoc package, and generates the sphinx documentation in html.
   * Added debian/source/options to ignore the egg-info changes, and removed the
     deletion of it.
@@ -14,13 +8,23 @@ stevedore (0.13-1) unstable; urgency=medium
   * Canonical VCS fields.
   * Standards-Version: is now 3.9.5.
 
- -- Thomas Goirand <zigo@debian.org>  Sat, 08 Feb 2014 22:54:16 +0800
+ -- Thomas Goirand <zigo@debian.org>  Sun, 09 Feb 2014 11:53:49 +0800
+
+stevedore (0.13-1) unstable; urgency=low
+
+  * New upstream release:
+    - d/control: Add new BD's on python-pbr/python3-pbr.
+    - d/rules: Configure OSLO_PACKAGE_VERSION=$(VERSION).
+  * d/watch: Track upstream releases on pypi correctly.
+
+ -- James Page <james.page@ubuntu.com>  Wed, 04 Dec 2013 11:45:32 +0000
 
 stevedore (0.10-2) unstable; urgency=low
 
   * Removed pkg-openstack as maintainer uppon request form Julien.
   * Switched to debhelper 9.
   * Added python3 support, thanks to patch from James Patch (Closes: #719223).
+  * Cannonical VCS URLs.
 
  -- Thomas Goirand <zigo@debian.org>  Tue, 13 Aug 2013 23:24:49 +0200
 

@@ -6,16 +6,21 @@ Uploaders: Thomas Goirand <zigo@debian.org>
 Build-Depends: debhelper (>= 9),
                openstack-pkg-tools,
                python (>= 2.6.6-3~),
-               python-mock,
-               python-nose,
                python-pbr (>= 0.5.21),
                python-setuptools,
                python-sphinx,
                python3-all (>= 3.1.2-7~),
-               python3-mock,
-               python3-nose,
                python3-pbr (>= 0.5.21),
                python3-setuptools
+Build-Depends-Indep: python-coverage (>= 3.6),
+                     python-mock,
+                     python-nose,
+                     python-pil,
+                     python-six (>= 1.7.0),
+                     python3-mock,
+                     python3-nose,
+                     python3-pil,
+                     python3-six (>= 1.7.0)
 Standards-Version: 3.9.5
 Vcs-Git: git://anonscm.debian.org/collab-maint/stevedore.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/stevedore.git;a=summary

@@ -1,6 +1,7 @@
-stevedore (1.0.0-2) UNRELEASED; urgency=medium
+stevedore (1.0.0-2) experimental; urgency=medium
 
   * Changed VCS URLs to the openstack group (as per agreement with Julien).
+  * Added argparse to debian/py3dist-overrides.
 
  -- Thomas Goirand <zigo@debian.org>  Sat, 18 Oct 2014 15:14:47 +0000
 

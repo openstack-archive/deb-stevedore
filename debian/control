@@ -14,13 +14,15 @@ Build-Depends: debhelper (>= 9),
                python3-setuptools
 Build-Depends-Indep: python-coverage (>= 3.6),
                      python-mock,
-                     python-nose,
+                     python-oslotest,
                      python-pil,
                      python-six (>= 1.7.0),
                      python3-mock,
-                     python3-nose,
+                     python3-oslotest,
                      python3-pil,
-                     python3-six (>= 1.7.0)
+                     python3-six (>= 1.7.0),
+                     testrepository,
+                     subunit
 Standards-Version: 3.9.6
 Vcs-Git: git://anonscm.debian.org/openstack/stevedore.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/stevedore.git;a=summary
@@ -29,7 +31,7 @@ Homepage: https://github.com/openstack/stevedore
 Package: python-stevedore
 Architecture: all
 Pre-Depends: dpkg (>= 1.15.6~)
-Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}
+Depends: python-pbr, ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}
 Description: manage dynamic plugins for Python applications - python2
  Python makes loading code dynamically easy, allowing you to configure and
  extend your application by discovering and loading extensions (plugins) at
@@ -45,7 +47,7 @@ Description: manage dynamic plugins for Python applications - python2
 Package: python3-stevedore
 Architecture: all
 Pre-Depends: dpkg (>= 1.15.6~)
-Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Depends: python3-pbr, ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
 Description: manage dynamic plugins for Python applications - python3
  Python makes loading code dynamically easy, allowing you to configure and
  extend your application by discovering and loading extensions (plugins) at

@@ -1,4 +1,4 @@
-stevedore (1.1.0-1) UNRELEASED; urgency=medium
+stevedore (1.1.0-1) experimental; urgency=medium
 
   * New upstream release.
   * Added python-pbr as dependency.

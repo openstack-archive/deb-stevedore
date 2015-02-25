@@ -13,38 +13,46 @@ PYTHON3=$(shell py3versions -vr)
 	dh $@ --with=python2,python3,sphinxdoc
 
 override_dh_auto_build:
-	set -e && for pyvers in $(PYTHON2); do \
+	set -e ; for pyvers in $(PYTHON2); do \
 		python$$pyvers setup.py build; \
 	done
-	set -e && for pyvers in $(PYTHON3); do \
+	set -e ; for pyvers in $(PYTHON3); do \
 		python$$pyvers setup.py build; \
 	done
 
 override_dh_auto_install:
-	set -e && for pyvers in $(PYTHON2); do \
+	set -e ; for pyvers in $(PYTHON2); do \
 		python$$pyvers setup.py install --install-layout=deb \
 			--root $(CURDIR)/debian/python-stevedore; \
 	done
-	set -e && for pyvers in $(PYTHON3); do \
+	set -e ; for pyvers in $(PYTHON3); do \
 		python$$pyvers setup.py install --install-layout=deb \
 			--root $(CURDIR)/debian/python3-stevedore; \
 	done
 
 override_dh_auto_clean:
-	set -e && for pyvers in $(PYTHON2); do \
+	set -e ; for pyvers in $(PYTHON2); do \
 		python$$pyvers setup.py clean; \
 	done
-	set -e && for pyvers in $(PYTHON3); do \
+	set -e ; for pyvers in $(PYTHON3); do \
 		python$$pyvers setup.py clean; \
 	done
 
 override_dh_auto_test:
-	set -e && for pyvers in $(PYTHON2); do \
-		PYTHONPATH=. PYTHON=python$$pyvers nosetests -d stevedore ; \
+ifeq (,$(findstring nocheck, $(DEB_BUILD_OPTIONS)))
+	@echo "===> Running tests"
+	set -e ; set -x ; for i in 2.7 $(PYTHON3S) ; do \
+		PYMAJOR=`echo $$i | cut -d'.' -f1` ; \
+		@echo "===> Testing with python$$i (python$$PYMAJOR)" ; \
+		rm -rf .testrepository ; \
+		testr-python$$PYMAJOR init ; \
+		TEMP_REZ=`mktemp -t` ; \
+		PYTHONPATH=$(CURDIR) PYTHON=python$$i testr-python$$PYMAJOR run --subunit | tee $$TEMP_REZ | subunit2pyunit ; \
+		cat $$TEMP_REZ | subunit-filter -s --no-passthrough | subunit-stats ; \
+		rm -f $$TEMP_REZ ; \
+		testr-python$$PYMAJOR slowest ; \
 	done
-	set -e && for pyvers in $(PYTHON3); do \
-		PYTHONPATH=. PYTHON=python$$pyvers nosetests3 -d stevedore ; \
-	done
+endif
 
 override_dh_sphinxdoc:
 ifeq (,$(findstring nodocs, $(DEB_BUILD_OPTIONS)))

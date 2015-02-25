@@ -23,7 +23,7 @@ Build-Depends-Indep: python-coverage (>= 3.6),
                      python-oslotest (>= 1.2.0),
                      subunit (>= 0.0.18),
                      python-oslosphinx (>= 2.2.0)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Vcs-Git: git://anonscm.debian.org/openstack/stevedore.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/stevedore.git;a=summary
 Homepage: https://github.com/openstack/stevedore

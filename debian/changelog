@@ -4,10 +4,20 @@ stevedore (1.2.0-1) UNRELEASED; urgency=medium
 
  -- Thomas Goirand <zigo@debian.org>  Wed, 25 Feb 2015 17:35:07 +0100
 
+stevedore (1.1.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Added python-pbr as dependency.
+  * Switched to testr instead of nose.
+
+ -- Thomas Goirand <zigo@debian.org>  Tue, 23 Dec 2014 10:53:58 +0800
+>>>>>>> 387b378f79947869c253075850297757c5e2be8a
+
 stevedore (1.0.0-2) experimental; urgency=medium
 
   * Changed VCS URLs to the openstack group (as per agreement with Julien).
   * Added argparse to debian/py3dist-overrides.
+  * Standards-Version is now 3.9.6 (no change).
 
  -- Thomas Goirand <zigo@debian.org>  Sat, 18 Oct 2014 15:14:47 +0000
 

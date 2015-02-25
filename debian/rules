@@ -30,13 +30,9 @@ override_dh_auto_install:
 			--root $(CURDIR)/debian/python3-stevedore; \
 	done
 
-override_dh_auto_clean:
-	set -e ; for pyvers in $(PYTHON2); do \
-		python$$pyvers setup.py clean; \
-	done
-	set -e ; for pyvers in $(PYTHON3); do \
-		python$$pyvers setup.py clean; \
-	done
+override_dh_clean:
+	dh_clean -O--buildsystem=python_distutils
+	rm -rf build
 
 override_dh_auto_test:
 ifeq (,$(findstring nocheck, $(DEB_BUILD_OPTIONS)))

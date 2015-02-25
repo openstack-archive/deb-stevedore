@@ -52,6 +52,6 @@ endif
 
 override_dh_sphinxdoc:
 ifeq (,$(findstring nodocs, $(DEB_BUILD_OPTIONS)))
-	sphinx-build -b html docs/source $(CURDIR)/debian/python-stevedore-doc/usr/share/doc/python-stevedore-doc/html
+	sphinx-build -b html doc/source $(CURDIR)/debian/python-stevedore-doc/usr/share/doc/python-stevedore-doc/html
 	dh_sphinxdoc -O--buildsystem=python_distutils
 endif

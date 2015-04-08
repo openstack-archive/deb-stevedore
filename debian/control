@@ -18,11 +18,11 @@ Build-Depends-Indep: python-coverage (>= 3.6),
                      python-oslosphinx (>= 2.2.0.0),
                      python-oslotest (>= 1.2.0),
                      python-pil,
-                     python-six (>= 1.7.0),
+                     python-six (>= 1.9.0),
                      python3-mock,
                      python3-oslotest,
                      python3-pil,
-                     python3-six (>= 1.7.0),
+                     python3-six (>= 1.9.0),
                      subunit (>= 0.0.18),
                      testrepository (>= 0.0.18)
 Standards-Version: 3.9.6

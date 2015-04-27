@@ -12,7 +12,6 @@ stevedore (1.1.0-1) experimental; urgency=medium
   * Switched to testr instead of nose.
 
  -- Thomas Goirand <zigo@debian.org>  Tue, 23 Dec 2014 10:53:58 +0800
->>>>>>> 387b378f79947869c253075850297757c5e2be8a
 
 stevedore (1.0.0-2) experimental; urgency=medium
 

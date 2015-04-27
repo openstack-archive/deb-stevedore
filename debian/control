@@ -13,18 +13,18 @@ Build-Depends: debhelper (>= 9),
                python3-all (>= 3.1.2-7~),
                python3-pbr (>= 0.5.21),
                python3-setuptools
-Build-Depends-Indep: python-coverage (>= 3.6),
+Build-Depends-Indep: python-coverage,
                      python-mock,
                      python-oslosphinx (>= 2.2.0.0),
                      python-oslotest (>= 1.2.0),
                      python-pil,
                      python-six (>= 1.9.0),
                      python3-mock,
-                     python3-oslotest,
+                     python3-oslotest (>= 1.2.0),
                      python3-pil,
                      python3-six (>= 1.9.0),
-                     subunit (>= 0.0.18),
-                     testrepository (>= 0.0.18)
+                     subunit,
+                     testrepository,
 Standards-Version: 3.9.6
 Vcs-Git: git://anonscm.debian.org/openstack/stevedore.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/stevedore.git;a=summary
@@ -32,8 +32,7 @@ Homepage: https://github.com/openstack/stevedore
 
 Package: python-stevedore
 Architecture: all
-Pre-Depends: dpkg (>= 1.15.6~)
-Depends: python-pbr (>= 0.6),
+Depends: python-pbr,
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends}
@@ -51,8 +50,7 @@ Description: manage dynamic plugins for Python applications - python2
 
 Package: python3-stevedore
 Architecture: all
-Pre-Depends: dpkg (>= 1.15.6~)
-Depends: python3-pbr (>= 0.6),
+Depends: python3-pbr,
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
@@ -71,7 +69,6 @@ Description: manage dynamic plugins for Python applications - python3
 Package: python-stevedore-doc
 Section: doc
 Architecture: all
-Pre-Depends: dpkg (>= 1.15.6~)
 Depends: ${misc:Depends}, ${sphinxdoc:Depends}
 Description: manage dynamic plugins for Python applications - doc
  Python makes loading code dynamically easy, allowing you to configure and

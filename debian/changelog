@@ -3,6 +3,7 @@ stevedore (1.5.0-1) UNRELEASED; urgency=medium
   * Team upload.
   * New upstream release (Closes: #719965).
     - d/control: Align version requirements with upstream.
+    - d/control: Add python3-sphinx to BD's.
 
  -- James Page <james.page@ubuntu.com>  Fri, 05 Jun 2015 09:56:09 +0100
 

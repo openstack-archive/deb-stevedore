@@ -1,4 +1,4 @@
-stevedore (1.5.0-1) UNRELEASED; urgency=medium
+stevedore (1.5.0-1) experimental; urgency=medium
 
   * Team upload.
   * New upstream release (Closes: #719965).
@@ -7,7 +7,7 @@ stevedore (1.5.0-1) UNRELEASED; urgency=medium
     - d/rules: Explicitly configure PYTHONPATH when generating docs.
   * d/watch: Update to use Debian pypi redirector.
 
- -- James Page <james.page@ubuntu.com>  Fri, 05 Jun 2015 09:56:09 +0100
+ -- James Page <james.page@ubuntu.com>  Fri, 05 Jun 2015 10:24:55 +0100
 
 stevedore (1.3.0-1) unstable; urgency=medium
 

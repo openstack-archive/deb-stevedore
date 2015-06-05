@@ -5,6 +5,7 @@ stevedore (1.5.0-1) UNRELEASED; urgency=medium
     - d/control: Align version requirements with upstream.
     - d/control: Add python3-sphinx to BD's.
     - d/rules: Explicitly configure PYTHONPATH when generating docs.
+  * d/watch: Update to use Debian pypi redirector.
 
  -- James Page <james.page@ubuntu.com>  Fri, 05 Jun 2015 09:56:09 +0100
 

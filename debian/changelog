@@ -1,3 +1,10 @@
+stevedore (1.5.0-2) UNRELEASED; urgency=medium
+
+  * d/control: Add python-pkg-resources [1] as a dependency.
+    [1] https://github.com/openstack/stevedore/blob/1.5.0/stevedore/extension.py#L4
+
+ -- Ivan Udovichenko <iudovichenko@mirantis.com>  Tue, 29 Sep 2015 17:19:33 +0300
+
 stevedore (1.5.0-1) experimental; urgency=medium
 
   * Team upload.

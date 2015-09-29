@@ -34,6 +34,7 @@ Homepage: https://github.com/openstack/stevedore
 Package: python-stevedore
 Architecture: all
 Depends: python-pbr,
+         python-pkg-resources,
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends}
@@ -52,6 +53,7 @@ Description: manage dynamic plugins for Python applications - python2
 Package: python3-stevedore
 Architecture: all
 Depends: python3-pbr,
+         python3-pkg-resources,
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

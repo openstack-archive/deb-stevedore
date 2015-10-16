@@ -1,8 +1,8 @@
 stevedore (1.5.0-2) unstable; urgency=medium
 
   [ Ivan Udovichenko ]
-  * d/control: Add python-pkg-resources [1] as a dependency.
-    [1] https://github.com/openstack/stevedore/blob/1.5.0/stevedore/extension.py#L4
+  * d/control: Add python-pkg-resources as a dependency.
+    https://github.com/openstack/stevedore/blob/1.5.0/stevedore/extension.py#L4
 
   [ Thomas Goirand ]
   * Uploading to unstable.

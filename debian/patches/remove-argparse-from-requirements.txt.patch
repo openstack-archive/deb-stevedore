@@ -1,0 +1,14 @@
+Description: Remove argparse from requirements.txt
+Author: Thomas Goirand <zigo@debian.org>
+Bug-Debian: https://bugs.debian.org/809033
+Forwarded: no
+Last-Update: 2016-01-11
+
+--- stevedore-1.5.0.orig/requirements.txt
++++ stevedore-1.5.0/requirements.txt
+@@ -3,5 +3,4 @@
+ # process, which may cause wedges in the gate later.
+ 
+ pbr>=0.11,<2.0
+-argparse
+ six>=1.9.0

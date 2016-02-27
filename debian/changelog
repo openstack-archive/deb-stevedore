@@ -1,3 +1,14 @@
+stevedore (1.12.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * Added myself to copyright file.
+  * Standards-Version is 3.9.7 now (no change).
+  * Fixed Vcs URLs (https).
+  * Removed patch remove-argparse-from-requirements.txt.patch
+    (Applied upstream)
+
+ -- Ondřej Nový <novy@ondrej.org>  Sat, 27 Feb 2016 19:41:04 +0100
+
 stevedore (1.10.0-1) experimental; urgency=medium
 
   * New upstream release.

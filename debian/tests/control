@@ -1,0 +1,3 @@
+Test-Command: python -c "import stevedore"
+
+Test-Command: python3 -c "import stevedore"

@@ -1,3 +1,5 @@
+Depends: python-stevedore
 Test-Command: python -c "import stevedore"
 
+Depends: python3-stevedore
 Test-Command: python3 -c "import stevedore"

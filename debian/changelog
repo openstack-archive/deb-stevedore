@@ -11,6 +11,7 @@ stevedore (1.12.0-1) unstable; urgency=medium
 
 stevedore (1.10.0-2) unstable; urgency=medium
 
+  * New upstream release.
   * Uploading to unstable.
   * Standards-Version: 3.9.7 (no change).
   * HTTPS VCS URLs.

@@ -2,6 +2,7 @@ stevedore (1.12.0-2) UNRELEASED; urgency=medium
 
   * Standards-Version is 3.9.8 now (no change)
   * Fix copyright year in documentation to make build reproducible
+  * d/rules: Removed UPSTREAM_GIT with default value
 
  -- Ondřej Nový <novy@ondrej.org>  Sat, 09 Apr 2016 19:32:27 +0200
 

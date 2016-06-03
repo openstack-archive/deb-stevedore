@@ -3,8 +3,10 @@ Author: Ondřej Nový <novy@ondrej.org>
 Forwarded: not-needed
 Last-Update: 2016-04-23
 
---- a/doc/source/conf.py
-+++ b/doc/source/conf.py
+Index: stevedore/doc/source/conf.py
+===================================================================
+--- stevedore.orig/doc/source/conf.py
++++ stevedore/doc/source/conf.py
 @@ -12,6 +12,7 @@
  # serve to show the default.
  
@@ -13,7 +15,7 @@ Last-Update: 2016-04-23
  import subprocess
  
  # If extensions (or modules to document with autodoc) are in another directory,
-@@ -49,7 +50,11 @@
+@@ -49,7 +50,11 @@ master_doc = 'index'
  
  # General information about the project.
  project = u'stevedore'

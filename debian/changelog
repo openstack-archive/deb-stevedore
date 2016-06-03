@@ -7,6 +7,7 @@ stevedore (1.14.0-1) experimental; urgency=medium
 
   [ Thomas Goirand ]
   * New upstream release.
+  * Removed sphinx conf.py patch.
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 03 Jun 2016 11:41:22 +0000
 

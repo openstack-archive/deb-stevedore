@@ -1,10 +1,14 @@
-stevedore (1.12.0-2) UNRELEASED; urgency=medium
+stevedore (1.14.0-1) experimental; urgency=medium
 
+  [ Ondřej Nový ]
   * Standards-Version is 3.9.8 now (no change)
   * Fix copyright year in documentation to make build reproducible
   * d/rules: Removed UPSTREAM_GIT with default value
 
- -- Ondřej Nový <novy@ondrej.org>  Sat, 09 Apr 2016 19:32:27 +0200
+  [ Thomas Goirand ]
+  * New upstream release.
+
+ -- Thomas Goirand <zigo@debian.org>  Fri, 03 Jun 2016 11:41:22 +0000
 
 stevedore (1.12.0-1) unstable; urgency=medium
 

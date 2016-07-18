@@ -1,4 +1,8 @@
+import logging
+
 from .extension import ExtensionManager
+
+LOG = logging.getLogger(__name__)
 
 
 class NamedExtensionManager(ExtensionManager):
@@ -34,6 +38,10 @@ class NamedExtensionManager(ExtensionManager):
         when this is called (when an entrypoint fails to load) are
         (manager, entrypoint, exception)
     :type on_load_failure_callback: function
+    :param on_missing_entrypoints_callback: Callback function that will be
+        called when one or more names cannot be found. The provided argument
+        will be a subset of the 'names' parameter.
+    :type on_missing_entrypoints_callback: function
     :param verify_requirements: Use setuptools to enforce the
         dependencies of the plugin(s) being loaded. Defaults to False.
     :type verify_requirements: bool
@@ -44,6 +52,7 @@ class NamedExtensionManager(ExtensionManager):
                  invoke_on_load=False, invoke_args=(), invoke_kwds={},
                  name_order=False, propagate_map_exceptions=False,
                  on_load_failure_callback=None,
+                 on_missing_entrypoints_callback=None,
                  verify_requirements=False):
         self._init_attributes(
             namespace, names, name_order=name_order,
@@ -53,6 +62,13 @@ class NamedExtensionManager(ExtensionManager):
                                         invoke_args,
                                         invoke_kwds,
                                         verify_requirements)
+        self._missing_names = set(names) - set([e.name for e in extensions])
+        if self._missing_names:
+            if on_missing_entrypoints_callback:
+                on_missing_entrypoints_callback(self._missing_names)
+            else:
+                LOG.warning('Could not load %s' %
+                            ', '.join(self._missing_names))
         self._init_plugins(extensions)
 
     @classmethod
@@ -103,13 +119,15 @@ class NamedExtensionManager(ExtensionManager):
             on_load_failure_callback=on_load_failure_callback)
 
         self._names = names
+        self._missing_names = set()
         self._name_order = name_order
 
     def _init_plugins(self, extensions):
         super(NamedExtensionManager, self)._init_plugins(extensions)
 
         if self._name_order:
-            self.extensions = [self[n] for n in self._names]
+            self.extensions = [self[n] for n in self._names
+                               if n not in self._missing_names]
 
     def _load_one_plugin(self, ep, invoke_on_load, invoke_args, invoke_kwds,
                          verify_requirements):

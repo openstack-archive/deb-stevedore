@@ -8,6 +8,7 @@ stevedore (1.16.0-1) UNRELEASED; urgency=medium
   [ Corey Bryant ]
   * New upstream release.
   * d/gbp.conf: Update debian-branch for Newton.
+  * d/control: Align (Build-)Depends with upstream.
 
  -- Corey Bryant <corey.bryant@canonical.com>  Mon, 18 Jul 2016 15:23:24 -0400
 

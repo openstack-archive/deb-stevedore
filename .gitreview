@@ -1,4 +1,5 @@
 [gerrit]
 host=review.openstack.org
 port=29418
-project=openstack/stevedore.git
+project=openstack/deb-stevedore.git
+defaultbranch=debian/newton

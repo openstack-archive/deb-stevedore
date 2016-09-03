@@ -1,0 +1,8 @@
+Code-Review+2: Ivan Udovichenko <iudovichenko@mirantis.com>
+Workflow+1: Ivan Udovichenko <iudovichenko@mirantis.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Sat, 03 Sep 2016 08:51:16 +0000
+Reviewed-on: https://review.openstack.org/360604
+Project: openstack/deb-stevedore
+Branch: refs/heads/debian/newton

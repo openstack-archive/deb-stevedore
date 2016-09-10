@@ -1,0 +1,9 @@
+Code-Review+1: venkatamahesh <Venkata.Kotha@infinite.com>
+Code-Review+2: Doug Hellmann <doug@doughellmann.com>
+Workflow+1: Doug Hellmann <doug@doughellmann.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 14 Sep 2015 23:45:03 +0000
+Reviewed-on: https://review.openstack.org/223177
+Project: openstack/deb-stevedore
+Branch: refs/heads/stable/liberty

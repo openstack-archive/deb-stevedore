@@ -11,6 +11,10 @@ stevedore (1.16.0-1) UNRELEASED; urgency=medium
   * d/control: Align (Build-)Depends with upstream.
   * d/p/sphinx_reproducible_build.patch: Dropped, no longer needed.
 
+  [ Ondřej Nový ]
+  * d/s/options: extend-diff-ignore of .gitreview
+  * d/control: Using OpenStack's Gerrit as VCS URLs.
+
  -- Corey Bryant <corey.bryant@canonical.com>  Mon, 18 Jul 2016 15:23:24 -0400
 
 stevedore (1.12.0-1) unstable; urgency=medium

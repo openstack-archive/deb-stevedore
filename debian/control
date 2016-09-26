@@ -27,8 +27,8 @@ Build-Depends-Indep: python-coverage,
                      subunit,
                      testrepository,
 Standards-Version: 3.9.8
-Vcs-Git: https://anonscm.debian.org/git/openstack/stevedore.git
-Vcs-Browser: https://anonscm.debian.org/cgit/openstack/stevedore.git/
+Vcs-Git: https://git.openstack.org/openstack/deb-stevedore -b debian/newton
+Vcs-Browser: https://git.openstack.org/cgit/openstack/deb-stevedore?h=debian%2Fnewton
 Homepage: https://github.com/openstack/stevedore
 
 Package: python-stevedore

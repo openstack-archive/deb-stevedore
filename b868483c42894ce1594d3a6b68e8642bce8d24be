@@ -1,0 +1,8 @@
+Code-Review+2: ChangBo Guo(gcb) <glongwave@gmail.com>
+Workflow+1: ChangBo Guo(gcb) <glongwave@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 03 Nov 2016 12:38:06 +0000
+Reviewed-on: https://review.openstack.org/389949
+Project: openstack/deb-stevedore
+Branch: refs/heads/master

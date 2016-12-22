@@ -1,0 +1,9 @@
+Code-Review+2: Doug Hellmann <doug@doughellmann.com>
+Code-Review+2: Michael Still <mikal@stillhq.com>
+Workflow+1: Michael Still <mikal@stillhq.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 22 Dec 2016 00:07:24 +0000
+Reviewed-on: https://review.openstack.org/413357
+Project: openstack/deb-stevedore
+Branch: refs/heads/master
